@@ -95,7 +95,9 @@ func ConvertToCobertura(path string, project *entity.Project) *Coverage {
 					}
 					if condition, ok := conditions[line.Number]; ok {
 						xmlLine.Branch = "true"
-						xmlLine.ConditionCoverage = condition.String()
+						// Do not add condition coverage because we do not know the condtions
+						//xmlLine.ConditionCoverage = condition.String()
+						_ = condition
 					}
 
 					methodsLines.Lines = append(methodsLines.Lines, xmlLine)
