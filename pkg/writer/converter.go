@@ -93,11 +93,14 @@ func ConvertToCobertura(path string, project *entity.Project) *Coverage {
 						Hits:   strconv.Itoa(line.CoverageCount),
 						Branch: "false",
 					}
-					if condition, ok := conditions[line.Number]; ok {
+					if _, ok := conditions[line.Number]; ok {
 						xmlLine.Branch = "true"
-						// Do not add condition coverage because we do not know the condtions
-						//xmlLine.ConditionCoverage = condition.String()
-						_ = condition
+						// write dummy condition depending on line coverage
+						if line.CoverageCount == 0 {
+							xmlLine.ConditionCoverage = "0.00 (0/1)"
+						} else {
+							xmlLine.ConditionCoverage = "1.00 (1/1)"
+						}
 					}
 
 					methodsLines.Lines = append(methodsLines.Lines, xmlLine)
