@@ -64,7 +64,7 @@ func (c *cleanCustomIfVisitor) Visit(node ast.Node) (w ast.Visitor) {
 	}
 
 	c.customIF = append(c.customIF, customIF{
-		start: c.fset.Position(node.Pos()),
+		start: c.fset.Position(node.(*ast.IfStmt).Cond.Pos()),
 		end:   c.fset.Position(node.End()),
 	})
 

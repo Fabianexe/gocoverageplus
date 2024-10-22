@@ -61,7 +61,7 @@ func (c *cleanErrorIfVisitor) Visit(node ast.Node) (w ast.Visitor) {
 	}
 
 	c.errorIfs = append(c.errorIfs, errorIF{
-		start: c.fset.Position(node.Pos()),
+		start: c.fset.Position(node.(*ast.IfStmt).Cond.Pos()),
 		end:   c.fset.Position(node.End()),
 	})
 
