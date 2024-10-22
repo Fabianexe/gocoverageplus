@@ -24,10 +24,8 @@ func (b *branchVisitor) Visit(node ast.Node) (w ast.Visitor) {
 		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Pos(), v.End(), entity.TypeBlock))
 	// branch
 	case *ast.CaseClause:
-		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Pos(), v.Colon, entity.TypeAtomic))
 		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Colon, v.End(), entity.TypeBranch))
 	case *ast.CommClause:
-		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Pos(), v.Colon, entity.TypeAtomic))
 		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Colon, v.End(), entity.TypeBranch))
 	case *ast.IfStmt:
 		b.blocks = append(b.blocks, b.createBranch(v.Pos(), v.Pos(), v.Body.Pos(), entity.TypeAtomic))
