@@ -4,7 +4,6 @@ package coverage
 import (
 	"log/slog"
 	"path/filepath"
-	"strings"
 
 	"golang.org/x/tools/cover"
 
@@ -22,9 +21,10 @@ func LoadCoverage(project *entity.Project, coverageReport string) (*entity.Proje
 		slog.Debug("Profile", "Path", p.FileName, "Blocks", len(p.Blocks))
 		found := false
 		for _, pack := range project.Packages {
-			if !strings.HasPrefix(p.FileName, pack.Name) {
+			if filepath.Dir(p.FileName) != pack.Name {
 				continue
 			}
+
 			found = true
 			filename := filepath.Base(p.FileName)
 			for _, f := range pack.Files {
