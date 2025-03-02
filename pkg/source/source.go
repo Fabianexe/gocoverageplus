@@ -2,18 +2,20 @@
 package source
 
 import (
+	"fmt"
 	"go/ast"
 	"log/slog"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"golang.org/x/tools/go/packages"
 
 	"github.com/Fabianexe/gocoverageplus/pkg/entity"
 )
 
-func LoadSources(path string) (*entity.Project, error) {
-	goPackages, err := getGoPaths(path)
+func LoadSources(path string, excludePaths []string) (*entity.Project, error) {
+	goPackages, err := getGoPaths(path, excludePaths)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +101,7 @@ func LoadSources(path string) (*entity.Project, error) {
 	return &entity.Project{Packages: allPackages}, nil
 }
 
-func getGoPaths(path string) ([]string, error) {
+func getGoPaths(path string, excludePaths []string) ([]string, error) {
 	goPath := make(map[string]struct{}, 1000)
 	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		if filepath.Ext(path) == ".go" {
@@ -111,8 +113,27 @@ func getGoPaths(path string) ([]string, error) {
 		return nil, err
 	}
 
+	fullExcludePaths := make([]string, 0, len(excludePaths))
+	for _, exclude := range excludePaths {
+		middle := ""
+		if !strings.HasSuffix(exclude, "/") {
+			middle = "/"
+		}
+
+		fullExcludePaths = append(fullExcludePaths, path+middle+exclude)
+	}
+
+	p := path + "/pkg"
 	goPackages := make([]string, 0, len(goPath))
+packLoop:
 	for pack := range goPath {
+		for _, exclude := range fullExcludePaths {
+			if strings.HasPrefix(pack, exclude) {
+				continue packLoop
+			}
+		}
+
+		fmt.Println(p, pack)
 		goPackages = append(goPackages, pack)
 	}
 	return goPackages, nil

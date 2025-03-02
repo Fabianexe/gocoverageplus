@@ -10,6 +10,7 @@ import (
 type Config struct {
 	OutputFormat string
 	SourcePath   string
+	ExcludePaths []string
 	Cleaner      struct {
 		ErrorIf       bool
 		NoneCodeLines bool

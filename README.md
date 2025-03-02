@@ -25,7 +25,14 @@ The config file is a json file with the following structure:
 ```json
 {
   "OutputFormat": "cobertura",
+  "Complexity": {
+    "Active": true,
+    "Type": "cognitive"
+  },
   "SourcePath": "./",
+  "ExcludePaths": [
+    "vendor"
+  ],
   "Cleaner": {
     "ErrorIf": true,
     "NoneCodeLines": true,
@@ -33,17 +40,20 @@ The config file is a json file with the following structure:
     "CustomIf": [
       "debug"
     ]
-  },
-  "Complexity": {
-    "Active": true,
-    "Type": "cognitive"
   }
 }
 ```
 As output formats, you can choose between `cobertura` and `textfmt`. The first is described in the cobertura section and 
 the second is the default go coverage format.
 Complexity only apply for the `cobertura` format. The complexity type can be either `cognitive` or `cyclomatic`. 
-The difference between these metrics is described in the cobertura section.
+The difference between these metrics is described in the cobertura section. 
+
+The `SourcePath` is given relative to the working directory (starting with a `./`) or as absolute path. 
+The `ExcludePaths` are paths that should be excluded from the coverage report. If a directory is in the exclude list, all files in this directory or subdirectory are excluded.
+They are given relative to the `SourcePath`. There are no white card or regex matching here. Thus, If you want to execlude more than one directory, you have to add them all to the list.
+The example above would exclude all files in the `vendor` directory in the working directory.
+
+The `Cleaner` part contains the filters that should be applied to the source code.  More information about the filters can be found in the Source Code Filter section.
 
 ## The accuracy of `go test -coverprofile`
 The `go test -coverprofile` command is a great tool to get coverage information about your project.

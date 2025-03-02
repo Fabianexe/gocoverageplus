@@ -60,7 +60,7 @@ func RootCommand() {
 			}
 
 			slog.Info("Load sources")
-			project, err := source.LoadSources(sourcePath)
+			project, err := source.LoadSources(sourcePath, conf.ExcludePaths)
 			if err != nil {
 				slog.Error(fmt.Sprintf("%+v", err))
 				os.Exit(1)
