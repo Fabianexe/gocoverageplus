@@ -5,7 +5,7 @@ Also, can write cobertura format. Including complexity metrics and branch covera
 ## Installation
 Simple install it by `go install`:
 ```
-go install https://github.com/Fabianexe/gocoverageplus@latest
+go install github.com/Fabianexe/gocoverageplus@latest
 ```
 
 ## Usage
