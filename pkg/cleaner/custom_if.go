@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"slices"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 // cleanErrorIf removes all error if statements from the package data

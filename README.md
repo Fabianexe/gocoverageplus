@@ -5,8 +5,14 @@ Also, can write cobertura format. Including complexity metrics and branch covera
 ## Installation
 Simple install it by `go install`:
 ```
+go install github.com/thatcode/gocoverageplus@latest
+```
+
+Note: this is a fork of [Fabianexe/gocoverageplus](https://github.com/Fabianexe/gocoverageplus). To install the original:
+```
 go install github.com/Fabianexe/gocoverageplus@latest
 ```
+
 
 ## Usage
 `gocoverageplus` can be run without any arguments (fallbacking to defaults).
@@ -43,12 +49,12 @@ The config file is a json file with the following structure:
   }
 }
 ```
-As output formats, you can choose between `cobertura` and `textfmt`. The first is described in the cobertura section and 
+As output formats, you can choose between `cobertura` and `textfmt`. The first is described in the cobertura section and
 the second is the default go coverage format.
-Complexity only apply for the `cobertura` format. The complexity type can be either `cognitive` or `cyclomatic`. 
-The difference between these metrics is described in the cobertura section. 
+Complexity only apply for the `cobertura` format. The complexity type can be either `cognitive` or `cyclomatic`.
+The difference between these metrics is described in the cobertura section.
 
-The `SourcePath` is given relative to the working directory (starting with a `./`) or as absolute path. 
+The `SourcePath` is given relative to the working directory (starting with a `./`) or as absolute path.
 The `ExcludePaths` are paths that should be excluded from the coverage report. If a directory is in the exclude list, all files in this directory or subdirectory are excluded.
 They are given relative to the `SourcePath`. There are no white card or regex matching here. Thus, If you want to execlude more than one directory, you have to add them all to the list.
 The example above would exclude all files in the `vendor` directory in the working directory.
@@ -85,7 +91,7 @@ You can activate these filters by using the corresponding config values.
 
 # Cobertura Format
 The cobertura format is a widely used format for coverage reports. It is supported by many tools like Jenkins.
-It is an XML format that contains the coverage information for each file and package. 
+It is an XML format that contains the coverage information for each file and package.
 Besides the coverage information, it also contains the complexity metrics for each function.
 The format is described  [here](https://github.com/cobertura/cobertura/blob/master/cobertura/src/site/htdocs/xml/coverage-04.dtd).
 ## Cyclomatic Complexity vs Cognitive Complexity
@@ -110,7 +116,7 @@ Cognitive Complexity aims to produce a measurement that will correlate more clos
 
 ### Summary
 
-In summary, while Cyclomatic Complexity is a measure of the structural complexity of a program, Cognitive Complexity is a measure of how difficult a program is to understand by a human reader. 
+In summary, while Cyclomatic Complexity is a measure of the structural complexity of a program, Cognitive Complexity is a measure of how difficult a program is to understand by a human reader.
 Both are useful, but they serve different purposes and can lead to different conclusions about the code's quality.
 
 ## Others

@@ -4,7 +4,7 @@ import (
 	"go/ast"
 	"go/token"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 type branchVisitor struct {

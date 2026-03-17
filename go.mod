@@ -1,4 +1,4 @@
-module github.com/Fabianexe/gocoverageplus
+module github.com/thatcode/gocoverageplus
 
 go 1.22.0
 

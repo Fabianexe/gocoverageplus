@@ -2,7 +2,7 @@
 package cleaner
 
 import (
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 // CleanData cleans the package data

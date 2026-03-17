@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/tools/go/packages"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 func LoadSources(path string, excludePaths []string) (*entity.Project, error) {
