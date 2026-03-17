@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"go/token"
 	"golang.org/x/tools/go/packages"
 
 	"github.com/Fabianexe/gocoverageplus/pkg/entity"
@@ -73,6 +74,38 @@ func LoadSources(path string, excludePaths []string) (*entity.Project, error) {
 					countMethods++
 					className := getClassName(fun)
 					methodsMap[className] = append(methodsMap[className], method)
+				} else if gen, ok := decl.(*ast.GenDecl); ok && gen.Tok == token.VAR {
+					for _, spec := range gen.Specs {
+						if valueSpec, ok := spec.(*ast.ValueSpec); ok {
+							for _, value := range valueSpec.Values {
+								if funcLit, ok := value.(*ast.FuncLit); ok && len(valueSpec.Names) > 0 {
+									method := &entity.Method{
+										Name: valueSpec.Names[0].Name,
+										Body: funcLit.Body,
+										File: pkg.Fset.File(value.Pos()),
+									}
+
+									// start after the function declaration
+									startLine := pkg.Fset.Position(funcLit.Body.Lbrace).Line + 1
+									endLine := pkg.Fset.Position(funcLit.End()).Line
+									if startLine >= endLine {
+										continue
+									}
+
+									bV := &branchVisitor{
+										fset: pkg.Fset,
+									}
+
+									ast.Walk(bV, valueSpec)
+
+									method.Tree = bV.getTree()
+
+									countMethods++
+									methodsMap["-"] = append(methodsMap["-"], method)
+								}
+							}
+						}
+					}
 				}
 			}
 
