@@ -9,7 +9,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 func WriteXML(path string, project *entity.Project, outPath string) error {

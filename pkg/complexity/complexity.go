@@ -4,7 +4,7 @@ package complexity
 import (
 	"log/slog"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 // AddComplexity adds complexity metrics to the packages

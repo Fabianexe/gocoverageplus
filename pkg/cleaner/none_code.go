@@ -5,7 +5,7 @@ import (
 	"go/token"
 	"log/slog"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 func cleanNoneCodeLines(project *entity.Project) *entity.Project {

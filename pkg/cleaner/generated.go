@@ -4,7 +4,7 @@ import (
 	"go/ast"
 	"log/slog"
 
-	"github.com/Fabianexe/gocoverageplus/pkg/entity"
+	"github.com/thatcode/gocoverageplus/pkg/entity"
 )
 
 func cleanGeneratedFiles(project *entity.Project) *entity.Project {
