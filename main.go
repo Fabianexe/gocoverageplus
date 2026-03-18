@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/thatcode/gocoverageplus/pkg/commands"
+	"github.com/Fabianexe/gocoverageplus/pkg/commands"
 )
 
 func main() {

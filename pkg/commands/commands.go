@@ -9,12 +9,12 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/thatcode/gocoverageplus/pkg/cleaner"
-	"github.com/thatcode/gocoverageplus/pkg/complexity"
-	"github.com/thatcode/gocoverageplus/pkg/config"
-	"github.com/thatcode/gocoverageplus/pkg/coverage"
-	"github.com/thatcode/gocoverageplus/pkg/source"
-	"github.com/thatcode/gocoverageplus/pkg/writer"
+	"github.com/Fabianexe/gocoverageplus/pkg/cleaner"
+	"github.com/Fabianexe/gocoverageplus/pkg/complexity"
+	"github.com/Fabianexe/gocoverageplus/pkg/config"
+	"github.com/Fabianexe/gocoverageplus/pkg/coverage"
+	"github.com/Fabianexe/gocoverageplus/pkg/source"
+	"github.com/Fabianexe/gocoverageplus/pkg/writer"
 )
 
 func RootCommand() {

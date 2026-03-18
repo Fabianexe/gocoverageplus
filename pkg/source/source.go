@@ -12,7 +12,7 @@ import (
 	"go/token"
 	"golang.org/x/tools/go/packages"
 
-	"github.com/thatcode/gocoverageplus/pkg/entity"
+	"github.com/Fabianexe/gocoverageplus/pkg/entity"
 )
 
 func LoadSources(path string, excludePaths []string) (*entity.Project, error) {

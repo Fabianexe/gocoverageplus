@@ -5,14 +5,8 @@ Also, can write cobertura format. Including complexity metrics and branch covera
 ## Installation
 Simple install it by `go install`:
 ```
-go install github.com/thatcode/gocoverageplus@latest
-```
-
-Note: this is a fork of [Fabianexe/gocoverageplus](https://github.com/Fabianexe/gocoverageplus). To install the original:
-```
 go install github.com/Fabianexe/gocoverageplus@latest
 ```
-
 
 ## Usage
 `gocoverageplus` can be run without any arguments (fallbacking to defaults).

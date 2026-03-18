@@ -3,7 +3,7 @@ package writer
 import (
 	"strconv"
 
-	"github.com/thatcode/gocoverageplus/pkg/entity"
+	"github.com/Fabianexe/gocoverageplus/pkg/entity"
 )
 
 func ConvertToCobertura(path string, project *entity.Project) *Coverage {

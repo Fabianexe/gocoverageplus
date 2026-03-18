@@ -7,7 +7,7 @@ import (
 
 	"golang.org/x/tools/cover"
 
-	"github.com/thatcode/gocoverageplus/pkg/entity"
+	"github.com/Fabianexe/gocoverageplus/pkg/entity"
 )
 
 // LoadCoverage loads the coverage data from the given file
